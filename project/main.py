@@ -1,6 +1,6 @@
 import logging
 
-def convert(input: str, from_base: int, to_base: int, solution: bool) -> str:
+def convert(input: str, from_base: int, to_base: int, solution: bool = False) -> str:
     valid_base = {2, 8, 10, 16}
     if from_base not in valid_base or to_base not in valid_base:
         raise Exception("[Error] Invalid base")
