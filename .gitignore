@@ -1,0 +1,6 @@
+*
+!project/
+!project/**
+!.gitignore
+!test/
+!test/**
