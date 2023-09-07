@@ -4,3 +4,4 @@
 !.gitignore
 !test/
 !test/**
+!README.md
