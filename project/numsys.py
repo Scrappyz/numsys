@@ -1,4 +1,5 @@
 import logging
+import argparse
 
 def convert(input: str, from_base: int, to_base: int, solution: bool = False) -> str:
     valid_base = {2, 8, 10, 16}
@@ -73,7 +74,19 @@ def convert(input: str, from_base: int, to_base: int, solution: bool = False) ->
     return result
 
 def main():
-    print(convert("3b4.C8", 16, 10, True))
+    main_parser = argparse.ArgumentParser(prog="numsys", description="Performs number system operations")
+    
+    subparser = main_parser.add_subparsers(dest="subcommand")
+    convertion = subparser.add_parser(name="convert", help="Convert number systems")
+    convertion.add_argument("input", nargs=1, help="the input string", type=str)
+    convertion.add_argument("from_base", nargs=1, help="the base to convert from", type=int)
+    convertion.add_argument("to_base", nargs=1, help="the base to convert to", type=int)
+    convertion.add_argument("-s", "--solution", action="store_true", dest="solution", help="show solution")
+    
+    args = main_parser.parse_args()
+    
+    if args.subcommand == "convert":
+        print(convert(args.input[0], args.from_base[0], args.to_base[0], args.solution))
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
